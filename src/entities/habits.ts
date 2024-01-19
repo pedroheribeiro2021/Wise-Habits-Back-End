@@ -15,7 +15,7 @@ export class Habits {
   @Column()
   priority: number
 
-  @Column()
+  @Column({ default: false })
   status: boolean
 
   @Column({ length: 7, nullable: true, default: "SMTWTFS" })
