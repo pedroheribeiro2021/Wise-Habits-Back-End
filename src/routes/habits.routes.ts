@@ -10,5 +10,5 @@ export const habitsRoutes = Router()
 
 habitsRoutes.post("", createHabitsController)
 habitsRoutes.get("", listHabitsController)
-habitsRoutes.patch("", updateHabitsController)
-habitsRoutes.delete("", deleteHabitsController)
+habitsRoutes.patch("/:id", updateHabitsController)
+habitsRoutes.delete("/:id", deleteHabitsController)

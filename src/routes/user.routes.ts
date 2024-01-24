@@ -10,5 +10,5 @@ export const userRoutes = Router()
 
 userRoutes.post("", createUserController)
 userRoutes.get("", listUsersController)
-userRoutes.patch("", updateUserController)
-userRoutes.delete("", deleteUserController)
+userRoutes.patch("/:id", updateUserController)
+userRoutes.delete("/:id", deleteUserController)

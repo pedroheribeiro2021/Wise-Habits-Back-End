@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 import { User } from "./users"
+// import { WeekDays } from "./weekDays"
 
 @Entity("habits")
 export class Habits {
@@ -15,12 +16,18 @@ export class Habits {
   @Column()
   priority: number
 
-  @Column({ default: false })
-  status: boolean
+  @Column({ default: 0, nullable: true })
+  status: number
 
-  @Column({ length: 7, nullable: true, default: "SMTWTFS" })
-  weekDays: string
+  // @Column("text", { array: true })
+  // weekDays: string[]
+
+  @Column("simple-array", { default: [], nullable: true })
+  weekDays: string[]
 
   @ManyToOne(() => User, (user) => user.habits)
   user: User
+
+  // @OneToMany(() => WeekDays, (weekDay) => weekDay.habits, { cascade: true })
+  // weekDays: WeekDays[]
 }
