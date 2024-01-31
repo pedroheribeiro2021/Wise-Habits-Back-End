@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken";
 import { Repository } from "typeorm";
 import { IUserLogin } from "../../interfaces/user.interface";
 import { AppDataSource } from "../../data-source";
-import { User } from "../../entities/users";
 import { compare } from "bcrypt";
 import { AppError } from "../../errors/AppError";
+import { User } from "../../entities/users.entity";
 
 
 export const createSessionService = async ({

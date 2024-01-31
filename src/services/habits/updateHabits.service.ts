@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AppDataSource } from "../../data-source"
-import { Habits } from "../../entities/habits"
+import { Habits } from "../../entities/habits.entity"
 import { IHabitsRequest } from "../../interfaces/habits.interface"
 
 export const updateHabitsService = async(habitsData: IHabitsRequest, habitsId: string): Promise<object> => {

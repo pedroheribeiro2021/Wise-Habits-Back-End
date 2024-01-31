@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AppDataSource } from "../../data-source"
-import { User } from "../../entities/users"
+import { User } from "../../entities/users.entity"
 import { IUserUpdate } from "../../interfaces/user.interface"
 
 export const updateUserService = async(userData: IUserUpdate, userId: string): Promise<object> => {
