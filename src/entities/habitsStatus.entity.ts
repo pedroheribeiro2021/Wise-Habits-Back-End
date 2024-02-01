@@ -12,6 +12,8 @@ export class HabitStatus {
   @Column()
   date: string
 
-  @ManyToOne(() => Habits, (habit) => habit.statuses)
+  @ManyToOne(() => Habits, (habit) => habit.statuses, {
+    onDelete: "CASCADE",
+  })
   habit: Habits
 }

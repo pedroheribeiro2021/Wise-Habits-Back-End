@@ -4,9 +4,10 @@ import {
   listHabitsStatusController,
   updatedHabitStatusController,
 } from "../controllers/habitsStatus/habitsStatus.controller"
+import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware"
 
 export const statusRoutes = Router()
 
-statusRoutes.post("/:id/status", createHabitsStatusController)
+statusRoutes.post("/:id/status", ensureAuthMiddleware, createHabitsStatusController)
 statusRoutes.get("/:id/status", listHabitsStatusController)
-statusRoutes.patch("/:id/status", updatedHabitStatusController)
+statusRoutes.patch("/:id/status", ensureAuthMiddleware, updatedHabitStatusController)

@@ -26,10 +26,7 @@ export class User {
   @Exclude()
   password: string
 
-  @OneToMany(() => Habits, (habit) => habit.user, {
-    cascade: true,
-    onDelete: "CASCADE",
-  })
+  @OneToMany(() => Habits, (habit) => habit.user.id)
   habits: Habits[]
 
   @CreateDateColumn()

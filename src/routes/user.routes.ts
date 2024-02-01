@@ -5,10 +5,12 @@ import {
   listUsersController,
   updateUserController,
 } from "../controllers/users/users.controller"
+import { verifyUserEmailExistsMiddleware } from "../middlewares/verifyUserEmailExists.middleware"
+import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware"
 
 export const userRoutes = Router()
 
-userRoutes.post("", createUserController)
+userRoutes.post("", verifyUserEmailExistsMiddleware, createUserController)
 userRoutes.get("", listUsersController)
-userRoutes.patch("/:id", updateUserController)
-userRoutes.delete("/:id", deleteUserController)
+userRoutes.patch("/:id", ensureAuthMiddleware, updateUserController)
+userRoutes.delete("/:id", ensureAuthMiddleware, deleteUserController)

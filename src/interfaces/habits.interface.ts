@@ -4,6 +4,7 @@ export interface IHabitsRequest {
     priority: number
     status?: number | undefined
     weekDays: string[]
+    userId: string
 }
 
 export interface IweekDaysRequest {

@@ -8,6 +8,7 @@ import { updateHabitWeekDaysService } from "../../services/habits/weekDays.servi
 
 export const createHabitsController = async (req: Request, res: Response) => {
   const habitsData: IHabitsRequest = req.body
+  habitsData.userId = req.user.id // Adicione o ID do usuário aqui
 
   const newHabit = await createHabitsService(habitsData)
   return res.status(201).json(newHabit)

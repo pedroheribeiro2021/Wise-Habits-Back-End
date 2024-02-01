@@ -6,7 +6,8 @@ export const listHabitsService = async (): Promise<Habits[]> => {
 
   const habits = await habitsRepository.find({
     relations: {
-      statuses: true, // Carregar a relação 'statuses'
+      statuses: true, 
+      user: true
     },
   })
 

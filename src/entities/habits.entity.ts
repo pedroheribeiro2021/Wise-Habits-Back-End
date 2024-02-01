@@ -32,12 +32,11 @@ export class Habits {
   // @Column("jsonb", { default: [], nullable: true }) // Alterado para suportar JSONB
   // weekDays: { [day: string]: { status: number } }[]
 
-  @ManyToOne(() => User, (user) => user.habits)
+  @ManyToOne(() => User, (user) => user.habits, {
+    onDelete: "CASCADE",
+  })
   user: User
 
-  @OneToMany(() => HabitStatus, (habitStatus) => habitStatus.habit, {
-    cascade: true,
-    onDelete: 'CASCADE'
-  })
+  @OneToMany(() => HabitStatus, (habitStatus) => habitStatus.habit)
   statuses: HabitStatus[]
 }
