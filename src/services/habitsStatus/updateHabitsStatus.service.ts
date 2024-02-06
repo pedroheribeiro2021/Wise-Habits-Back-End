@@ -1,7 +1,10 @@
 import { AppDataSource } from "../../data-source"
 import { HabitStatus } from "../../entities/habitsStatus.entity"
 
-export const updateHabitStatusService = async (id: number, statusValue: number) => {
+export const updateHabitStatusService = async (
+  id: number,
+  statuses: { [key: string]: number },
+) => {
   const habitStatusRepository = AppDataSource.getRepository(HabitStatus)
   const habitStatus = await habitStatusRepository.findOneBy({ id })
 
@@ -9,7 +12,7 @@ export const updateHabitStatusService = async (id: number, statusValue: number) 
     throw new Error("HabitStatus not found")
   }
 
-  habitStatus.statusValue = statusValue
+  habitStatus.statuses = statuses
   await habitStatusRepository.save(habitStatus)
   return habitStatus
 }
