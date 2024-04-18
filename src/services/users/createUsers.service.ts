@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source"
-import { User } from "../../entities/users"
+import { User } from "../../entities/users.entity"
 import { IUserRequest } from "../../interfaces/user.interface"
 
 export const createUserService = async (

@@ -4,11 +4,15 @@ import {
   updateHabitsController,
   deleteHabitsController,
   listHabitsController,
+  updateHabitWeekDaysController,
 } from "../controllers/habits/habits.controller"
+import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware"
 
 export const habitsRoutes = Router()
 
-habitsRoutes.post("", createHabitsController)
+habitsRoutes.post("", ensureAuthMiddleware, createHabitsController)
 habitsRoutes.get("", listHabitsController)
-habitsRoutes.patch("/:id", updateHabitsController)
-habitsRoutes.delete("/:id", deleteHabitsController)
+habitsRoutes.patch("/:id", ensureAuthMiddleware, updateHabitsController)
+habitsRoutes.delete("/:id", ensureAuthMiddleware, deleteHabitsController)
+
+habitsRoutes.patch("/:id/weekDays", updateHabitWeekDaysController)

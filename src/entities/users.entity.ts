@@ -6,10 +6,10 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
 } from "typeorm"
 import { hashSync } from "bcrypt"
-import { Habits } from "./habits"
+import { Habits } from "./habits.entity"
 
 @Entity("users")
 export class User {
@@ -26,14 +26,14 @@ export class User {
   @Exclude()
   password: string
 
-  @OneToMany(() => Habits, (habit) => habit.user, { cascade: true })
+  @OneToMany(() => Habits, (habit) => habit.user.id)
   habits: Habits[]
 
   @CreateDateColumn()
   created_at: Date
 
-//   @UpdateDateColumn()
-//   updated_at: Date
+  //   @UpdateDateColumn()
+  //   updated_at: Date
 
   @BeforeUpdate()
   @BeforeInsert()

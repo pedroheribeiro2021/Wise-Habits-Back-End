@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Repository } from "typeorm"
-import { Habits } from "../../entities/habits"
 import { AppDataSource } from "../../data-source"
+import { Habits } from "../../entities/habits.entity"
 
 export const deleteHabitsService = async (id: string) => {
   const habitsRepository: Repository<Habits> =
