@@ -6,11 +6,8 @@ export class HabitStatus {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
-  statusValue: number // 10, 5, 0
-
-  @Column()
-  date: string
+  @Column({ type: "jsonb" })
+  statuses: { [key: string]: number }
 
   @ManyToOne(() => Habits, (habit) => habit.statuses, {
     onDelete: "CASCADE",

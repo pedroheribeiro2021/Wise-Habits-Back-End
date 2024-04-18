@@ -7,7 +7,7 @@ export const createHabitsStatusController = async (
   req: Request,
   res: Response,
 ) => {
-  const habitId = req.params.id // Pega o ID do hábito da URL
+  const habitId = req.params.id
   const statusData = req.body
 
   const newStatus = await createHabitsStatusService(habitId, statusData)
@@ -24,9 +24,9 @@ export const listHabitsStatusController = async (
 
 export const updatedHabitStatusController = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id)
-  const { statusValue } = req.body
+  const statusData = req.body
 
-  const status = await updateHabitStatusService(id, statusValue)
+  const status = await updateHabitStatusService(id, statusData)
 
   return res.status(200).json(status)
 }
