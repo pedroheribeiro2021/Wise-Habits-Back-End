@@ -9,7 +9,6 @@
     "dev": "ts-node-dev --ignore-watch node_modules --cls --rs src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "start": "node dist/src/server.js",
-    "build": "tsc build public",
     "prettier": "prettier --write ."
   },
   "dependencies": {
