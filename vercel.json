@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "yarn build",
-  "outputDirectory": "dist"
+  "builds": [{ "src": "api/server.ts", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "api/server.ts" }]
 }
