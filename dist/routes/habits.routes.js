@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.habitsRoutes = void 0;
+const express_1 = require("express");
+const habits_controller_1 = require("../controllers/habits/habits.controller");
+const ensureAuth_middleware_1 = require("../middlewares/ensureAuth.middleware");
+exports.habitsRoutes = (0, express_1.Router)();
+exports.habitsRoutes.post("", ensureAuth_middleware_1.ensureAuthMiddleware, habits_controller_1.createHabitsController);
+exports.habitsRoutes.get("", habits_controller_1.listHabitsController);
+exports.habitsRoutes.patch("/:id", ensureAuth_middleware_1.ensureAuthMiddleware, habits_controller_1.updateHabitsController);
+exports.habitsRoutes.delete("/:id", ensureAuth_middleware_1.ensureAuthMiddleware, habits_controller_1.deleteHabitsController);
+exports.habitsRoutes.patch("/:id/weekDays", habits_controller_1.updateHabitWeekDaysController);
