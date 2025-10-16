@@ -13,7 +13,7 @@ export const createHabitsService = async (
   const user = await userRepository.findOneBy({ id: habitData.userId }) // Buscar o usuário
 
   if (!user) {
-    throw new Error("Usuário não encontrado")
+    throw new AppError("Usuário não encontrado")
   }
 
   const newHabit = habitsRepositry.create(

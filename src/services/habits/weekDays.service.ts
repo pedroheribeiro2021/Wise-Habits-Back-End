@@ -9,7 +9,7 @@ export const updateHabitWeekDaysService = async (
 
   const habit = await habitRepository.findOneBy({ id: habitId })
   if (!habit) {
-    throw new Error("Hábito não encontrado")
+    throw new AppError("Hábito não encontrado")
   }
 
   habit.weekDays = weekDays

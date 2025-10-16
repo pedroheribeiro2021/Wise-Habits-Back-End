@@ -9,7 +9,7 @@ export const updateHabitStatusService = async (
   const habitStatus = await habitStatusRepository.findOneBy({ id })
 
   if (!habitStatus) {
-    throw new Error("HabitStatus not found")
+    throw new AppError("HabitStatus not found")
   }
 
   habitStatus.statuses = statuses
