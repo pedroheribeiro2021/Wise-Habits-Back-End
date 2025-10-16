@@ -2,6 +2,7 @@ import "dotenv/config"
 import "reflect-metadata"
 import { DataSource, DataSourceOptions } from "typeorm"
 import path from "path"
+import { AppError } from "./errors/AppError"
 
 const dataSourceConfig = (): DataSourceOptions => {
   const entitiesPath: string = path.join(__dirname, "./entities/**.{ts,js}")

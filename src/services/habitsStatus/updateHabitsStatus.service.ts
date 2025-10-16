@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../data-source"
 import { HabitStatus } from "../../entities/habitsStatus.entity"
+import { AppError } from "../../errors/AppError"
 
 export const updateHabitStatusService = async (
   id: number,

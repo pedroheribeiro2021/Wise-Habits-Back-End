@@ -3,6 +3,7 @@ import { Habits } from "../../entities/habits.entity"
 import { User } from "../../entities/users.entity"
 import { AppDataSource } from "../../data-source"
 import { IHabitsRequest } from "../../interfaces/habits.interface"
+import { AppError } from "../../errors/AppError"
 
 export const createHabitsService = async (
   habitData: IHabitsRequest,

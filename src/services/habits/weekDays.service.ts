@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../data-source"
 import { Habits } from "../../entities/habits.entity"
+import { AppError } from "../../errors/AppError"
 
 export const updateHabitWeekDaysService = async (
   habitId: string,
