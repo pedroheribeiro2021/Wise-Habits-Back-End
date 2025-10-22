@@ -10,6 +10,12 @@ import { statusRoutes } from "./routes/habitsStatus.routes"
 export const app: Application = express()
 app.use(express.json())
 app.use(cors())
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   }),
+// )
 
 app.use("/user", userRoutes)
 app.use("/login", sessionRoutes)

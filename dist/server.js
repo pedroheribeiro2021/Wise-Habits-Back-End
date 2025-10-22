@@ -5,10 +5,10 @@ const data_source_1 = require("./data-source");
 data_source_1.AppDataSource.initialize()
     .then(() => {
     console.log("Database connected!");
-    // app.listen(3003, () => {
+    // app.listen(3004, "0.0.0.0", () => {
     //   console.log("Server is running!")
     // })
-    app_1.app.listen(process.env.PORT || 3000, () => {
+    app_1.app.listen(process.env.PORT || 3004, () => {
         console.log("Server is running!");
     });
 })
