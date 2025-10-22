@@ -10,15 +10,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteHabitsService = void 0;
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const data_source_1 = require("../../data-source");
 const habits_entity_1 = require("../../entities/habits.entity");
-const deleteHabitsService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+const AppError_1 = require("../../errors/AppError");
+const deleteHabitsService = (id, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const habitsRepository = data_source_1.AppDataSource.getRepository(habits_entity_1.Habits);
     const habit = yield habitsRepository.findOne({
         where: {
             id: id,
+            user: { id: userId },
         },
     });
+    if (!habit) {
+        throw new AppError_1.AppError("Habit not found", 404);
+    }
     yield habitsRepository.remove(habit);
 });
 exports.deleteHabitsService = deleteHabitsService;

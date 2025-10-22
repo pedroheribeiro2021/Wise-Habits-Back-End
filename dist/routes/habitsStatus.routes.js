@@ -5,6 +5,6 @@ const express_1 = require("express");
 const habitsStatus_controller_1 = require("../controllers/habitsStatus/habitsStatus.controller");
 const ensureAuth_middleware_1 = require("../middlewares/ensureAuth.middleware");
 exports.statusRoutes = (0, express_1.Router)();
+exports.statusRoutes.patch("/:id/status", ensureAuth_middleware_1.ensureAuthMiddleware, habitsStatus_controller_1.updatedHabitStatusController);
 exports.statusRoutes.post("/:id/status", ensureAuth_middleware_1.ensureAuthMiddleware, habitsStatus_controller_1.createHabitsStatusController);
 exports.statusRoutes.get("/:id/status", habitsStatus_controller_1.listHabitsStatusController);
-exports.statusRoutes.patch("/:id/status", ensureAuth_middleware_1.ensureAuthMiddleware, habitsStatus_controller_1.updatedHabitStatusController);

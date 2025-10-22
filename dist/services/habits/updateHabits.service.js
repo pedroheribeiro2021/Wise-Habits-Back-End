@@ -13,13 +13,26 @@ exports.updateHabitsService = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const data_source_1 = require("../../data-source");
 const habits_entity_1 = require("../../entities/habits.entity");
-const updateHabitsService = (habitsData, habitsId) => __awaiter(void 0, void 0, void 0, function* () {
-    const HabitsRepository = data_source_1.AppDataSource.getRepository(habits_entity_1.Habits);
-    const findHabits = yield HabitsRepository.findOneBy({
-        id: habitsId
+const AppError_1 = require("../../errors/AppError");
+const updateHabitsService = (habitData, id, userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const habitsRepository = data_source_1.AppDataSource.getRepository(habits_entity_1.Habits);
+    const habit = yield habitsRepository.findOne({
+        where: {
+            id: id,
+            user: { id: userId },
+        },
     });
-    const updatedHabits = HabitsRepository.create(Object.assign(Object.assign({}, findHabits), habitsData));
-    yield HabitsRepository.save(updatedHabits);
-    return updatedHabits;
+    if (!habit) {
+        throw new AppError_1.AppError("Hábito não encontrado", 404);
+    }
+    const findHabits = yield habitsRepository.findOneBy({
+        id: habit.id,
+    });
+    if (!findHabits) {
+        throw new AppError_1.AppError("Hábito não encontrado", 404);
+    }
+    const updatedHabits = habitsRepository.create(Object.assign(Object.assign({}, findHabits), habitData));
+    const savedHabits = (yield habitsRepository.save(updatedHabits));
+    return savedHabits;
 });
 exports.updateHabitsService = updateHabitsService;

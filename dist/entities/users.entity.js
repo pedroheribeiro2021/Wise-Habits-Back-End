@@ -40,7 +40,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => habits_entity_1.Habits, (habit) => habit.user.id),
+    (0, typeorm_1.OneToMany)(() => habits_entity_1.Habits, (habit) => habit.user),
     __metadata("design:type", Array)
 ], User.prototype, "habits", void 0);
 __decorate([

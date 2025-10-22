@@ -23,7 +23,8 @@ const createHabitsController = (req, res) => __awaiter(void 0, void 0, void 0, f
 });
 exports.createHabitsController = createHabitsController;
 const listHabitsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const habits = yield (0, listHabits_service_1.listHabitsService)();
+    const userId = req.user.id;
+    const habits = yield (0, listHabits_service_1.listHabitsService)(userId);
     return res.json(habits);
 });
 exports.listHabitsController = listHabitsController;
@@ -37,12 +38,14 @@ exports.updateHabitWeekDaysController = updateHabitWeekDaysController;
 const updateHabitsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const habitsData = req.body;
     const id = req.params.id;
-    const habitUpdate = yield (0, updateHabits_service_1.updateHabitsService)(habitsData, id);
+    const userId = req.user.id; // ← Pegar userId
+    const habitUpdate = yield (0, updateHabits_service_1.updateHabitsService)(habitsData, id, userId); // ← Passar userId
     return res.status(200).json(habitUpdate);
 });
 exports.updateHabitsController = updateHabitsController;
 const deleteHabitsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield (0, deleteHabits_service_1.deleteHabitsService)(req.params.id);
+    const userId = req.user.id; // ← Pegar userId
+    yield (0, deleteHabits_service_1.deleteHabitsService)(req.params.id, userId); // ← Passar userId
     return res.status(204).json();
 });
 exports.deleteHabitsController = deleteHabitsController;

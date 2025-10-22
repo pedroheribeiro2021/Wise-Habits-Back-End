@@ -11,7 +11,7 @@ import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware"
 export const habitsRoutes = Router()
 
 habitsRoutes.post("", ensureAuthMiddleware, createHabitsController)
-habitsRoutes.get("", listHabitsController)
+habitsRoutes.get("", ensureAuthMiddleware, listHabitsController)
 habitsRoutes.patch("/:id", ensureAuthMiddleware, updateHabitsController)
 habitsRoutes.delete("/:id", ensureAuthMiddleware, deleteHabitsController)
 

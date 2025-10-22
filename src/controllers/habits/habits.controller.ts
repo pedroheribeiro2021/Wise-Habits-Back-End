@@ -15,7 +15,8 @@ export const createHabitsController = async (req: Request, res: Response) => {
 }
 
 export const listHabitsController = async (req: Request, res: Response) => {
-  const habits = await listHabitsService()
+  const userId = req.user.id
+  const habits = await listHabitsService(userId)
   return res.json(habits)
 }
 
@@ -33,11 +34,13 @@ export const updateHabitWeekDaysController = async (
 export const updateHabitsController = async (req: Request, res: Response) => {
   const habitsData: IHabitsRequest = req.body
   const id: string = req.params.id
-  const habitUpdate = await updateHabitsService(habitsData, id)
+  const userId: string = req.user.id // ← Pegar userId
+  const habitUpdate = await updateHabitsService(habitsData, id, userId) // ← Passar userId
   return res.status(200).json(habitUpdate)
 }
 
 export const deleteHabitsController = async (req: Request, res: Response) => {
-  await deleteHabitsService(req.params.id)
+  const userId: string = req.user.id // ← Pegar userId
+  await deleteHabitsService(req.params.id, userId) // ← Passar userId
   return res.status(204).json()
 }

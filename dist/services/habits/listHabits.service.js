@@ -12,12 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.listHabitsService = void 0;
 const data_source_1 = require("../../data-source");
 const habits_entity_1 = require("../../entities/habits.entity");
-const listHabitsService = () => __awaiter(void 0, void 0, void 0, function* () {
+const listHabitsService = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const habitsRepository = data_source_1.AppDataSource.getRepository(habits_entity_1.Habits);
     const habits = yield habitsRepository.find({
+        where: {
+            user: { id: userId },
+        },
         relations: {
             statuses: true,
-            user: true
+            user: true,
         },
     });
     habits.sort((a, b) => a.priority - b.priority);

@@ -15,12 +15,6 @@ const habitsStatus_routes_1 = require("./routes/habitsStatus.routes");
 exports.app = (0, express_1.default)();
 exports.app.use(express_1.default.json());
 exports.app.use((0, cors_1.default)());
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//   }),
-// )
 exports.app.use("/user", user_routes_1.userRoutes);
 exports.app.use("/login", session_routes_1.sessionRoutes);
 exports.app.use("/habits", habits_routes_1.habitsRoutes);

@@ -5,7 +5,6 @@ import { AppError } from "../errors/AppError"
 
 interface TokenPayload {
   sub: string
-  // inclua outras propriedades que você espera no token
 }
 
 export const ensureAuthMiddleware = async (

@@ -26,7 +26,7 @@ export class User {
   @Exclude()
   password: string
 
-  @OneToMany(() => Habits, (habit) => habit.user.id)
+  @OneToMany(() => Habits, (habit) => habit.user)
   habits: Habits[]
 
   @CreateDateColumn()
