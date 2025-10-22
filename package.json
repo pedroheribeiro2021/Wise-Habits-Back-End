@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules --cls --rs src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "start": "node dist/server.js",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d dist/data-source.js",
+    "start": "npm run migration:run && node dist/server.js",
     "build": "tsc",
     "prettier": "prettier --write ."
   },
